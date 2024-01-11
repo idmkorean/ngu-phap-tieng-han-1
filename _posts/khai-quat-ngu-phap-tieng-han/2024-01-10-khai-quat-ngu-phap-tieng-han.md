@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Khái quát ngữ pháp tiếng Hàn
 nav_order: 2
 has_children: true
