@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Cách chia bất quy tắc của vị từ
 nav_order: 3
 parent: Khái quát ngữ pháp tiếng Hàn
