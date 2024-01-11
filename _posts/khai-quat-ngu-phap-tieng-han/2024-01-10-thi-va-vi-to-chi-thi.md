@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Thì và vĩ tố chỉ thì
 nav_order: 4
 parent: Khái quát ngữ pháp tiếng Hàn
