@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Cách kết thúc câu
 nav_order: 5
 parent: Khái quát ngữ pháp tiếng Hàn
