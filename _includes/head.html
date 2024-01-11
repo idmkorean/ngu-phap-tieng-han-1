@@ -1,0 +1,60 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  {% unless site.plugins contains "jekyll-seo-tag" %}
+    <!-- <title>{{ page.title }} - {{ site.title }}</title> -->
+
+    <!-- {% if page.description %} -->
+    <!--   <meta name="Description" content="{{ page.description }}"> -->
+    <!-- {% endif %} -->
+  {% endunless %}
+
+  <link rel="shortcut icon" href="{{ 'dvtalk.ico' | absolute_url }}" type="image/x-icon">
+
+  <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | absolute_url }}">
+
+  {% if site.ga_tracking != nil %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_tracking }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '{{ site.ga_tracking }}'{% unless site.ga_tracking_anonymize_ip == nil %}, { 'anonymize_ip': true }{% endunless %});
+    </script>
+  {% endif %}
+
+
+
+
+  {% if site.search_enabled != false %}
+    <script type="text/javascript" src="{{ '/assets/js/vendor/lunr.min.js' | absolute_url }}"></script>
+  {% endif %}
+  <script type="text/javascript" src="{{ '/assets/js/just-the-docs.js' | absolute_url }}"></script>
+
+
+  {% if page.share != false %}
+  <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5f255d315a110b001244ded3&product=inline-share-buttons' async='async'></script>
+  {% endif %}
+
+  <meta name="keywords" content="verification, uvm, systemverilog, vim, icdesign">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% seo %}
+  <meta property="og:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.logo_qr | absolute_url }}{% endif %}">
+  <meta property="og:type" content="Blog" />
+
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:title" content="{% if page.title %}{{ page.title  }}{% else %}{{ site.title }}{% endif %}"  >
+  <meta property="twitter:description"  content="{% if page.description %}{{ page.description }}{% else %}{{ site.description  }}{% endif %}" >
+  <meta property="twitter:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.logo_qr | absolute_url }}{% endif %}">
+  <meta property="twitter:url" content="{% if page.url %}{{ page.url | absolute_url }}{% else %}{{ site.url | absolute_url }}{% endif %}">
+  <meta name="msvalidate.01" content="8A23F7E9461E7CB4AAE342C69B4C7023" />
+
+
+  {% include head_custom.html %}
+
+  <script data-ad-client="ca-pub-1391255197579233" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+</head>

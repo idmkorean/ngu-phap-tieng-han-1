@@ -1,0 +1,384 @@
+//
+// The basic two column layout
+//
+
+.side-bar {
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: $sidebar-color;
+
+
+
+  @include mq(md) {
+    flex-wrap: nowrap;
+    position: fixed;
+    width: $nav-width-md;
+    height: 100%;
+    flex-direction: column;
+    border-right: $border $border-color;
+    align-items: flex-end;
+
+    background-image: linear-gradient(
+      360deg,
+      rgba(darken($feedback-color, 0), 1) 0%,
+      rgba($feedback-color, 0.4) 50%,
+      rgba($feedback-color, 0) 100%
+      ),
+      // url(https://mdn.mozillademos.org/files/11307/bubbles.png)
+      ;
+
+  }
+
+  @include mq(lg) {
+    //hungvn width: calc((100% - #{$nav-width + $content-width}) / 2 + #{$nav-width});
+    width: calc((100% - #{$nav-width + $content-width}) / 4 + #{$nav-width});
+    min-width: $nav-width;
+  }
+}
+
+.customsvg {
+  fill: darken($feedback-color, 30%);
+}
+.customsvg:hover {
+  width:28pt;
+  height:28pt;
+  fill: lighten($feedback-link-color, 10%);
+}
+
+
+
+
+.main {
+  @include mq(md) {
+    position: relative;
+    max-width: $content-width;
+    margin-left: $nav-width-md;
+  }
+
+  @include mq(lg) {
+    margin-left: calc(
+      (100% - #{$nav-width + $content-width}) / 2 + #{$nav-width}
+    );
+  }
+}
+
+.main-content-wrap {
+  @include container;
+  padding-top: $gutter-spacing-sm;
+  padding-bottom: $gutter-spacing-sm;
+
+
+  @include mq(md) {
+    padding-top: $gutter-spacing;
+    padding-bottom: $gutter-spacing;
+  }
+}
+
+.main-header {
+  z-index: 0;
+  display: none;
+  background-color: $sidebar-color;
+
+  @include mq(md) {
+    display: flex;
+    justify-content: space-between;
+    height: $header-height  ;
+    background-color: $body-background-color;
+    border-bottom: $border $border-color;
+  }
+
+  &.nav-open {
+    display: block;
+
+    @include mq(md) {
+      display: flex;
+    }
+  }
+}
+
+
+.st-custom-button[data-network] {
+   display: inline-block;
+   padding: 10px 10px;
+   cursor: pointer;
+
+   &:hover {
+      text-decoration: underline;
+   }
+ }
+
+
+.customsvg_share {
+  fill: currentColor;
+}
+.customsvg_share:hover {
+  width:28pt;
+  height:28pt;
+  fill: lighten($link-color, 5%);
+}
+
+
+.site-nav,
+.site-header,
+
+.site-footer {
+  width: 100%;
+
+  @include mq(lg) {
+    width: $nav-width;
+  }
+}
+
+.site-nav {
+  display: none;
+
+  &.nav-open {
+    display: block;
+  }
+
+  @include mq(md) {
+    display: block;
+    // padding-top: $sp-8;
+    padding-top: $sp-1;
+    padding-bottom: $gutter-spacing-sm;
+    overflow-y: auto;
+    flex: 1 1 auto;
+  }
+}
+
+.site-header {
+  display: flex;
+  //hungvn min-height: $header-height;
+  min-height: $header-height + 100;
+  align-items: center;
+
+  @include mq(md) {
+    height: $header-height;
+    max-height: $header-height;
+    border-bottom: $border $border-color;
+  }
+}
+
+.site-title {
+  @include container;
+  flex-grow: 1;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding-top: $sp-8;
+  padding-bottom: $sp-3;
+  color: $body-heading-color;
+  @include fs-6;
+
+  @include mq(md) {
+    padding-top: $sp-2;
+    padding-bottom: $sp-2;
+  }
+}
+
+@if variable-exists(logo) {
+  .site-logo {
+    width: 100%;
+    height: 100%;
+    background-image: url($logo);
+    background-repeat: no-repeat;
+    // background-position: center;
+    background-position: left;
+    background-size: contain;
+  }
+}
+@if variable-exists(logo_dawn) {
+  .site-logo:hover {
+    background-image: url($logo_dawn);
+  }
+}
+
+.site-button {
+  display: flex;
+  height: 100%;
+  padding: $gutter-spacing-sm;
+  align-items: center;
+}
+
+@include mq(md) {
+  .site-header .site-button {
+    display: none;
+  }
+}
+
+.site-title:hover {
+  // background-image: linear-gradient(
+  //   -90deg,
+  //   rgba($feedback-color, 1) 00%,
+  //   rgba($feedback-color, 0.5) 50%,
+  //   rgba($feedback-color, 0) 100%
+  // );
+}
+
+.site-button:hover {
+  background-image: linear-gradient(
+    -90deg,
+    rgba($feedback-color, 1) 0%,
+    rgba($feedback-color, 0.8) 100%
+  );
+}
+
+// stylelint-disable selector-max-type
+
+body {
+  position: relative;
+  padding-bottom: $sp-10;
+  overflow-y: scroll;
+
+  @include mq(md) {
+    position: static;
+    padding-bottom: 0;
+  }
+
+}
+
+// stylelint-enable selector-max-type
+
+.site-footer {
+  @include container;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-top: $sp-4;
+  padding-bottom: $sp-4;
+  color: $grey-dk-000;
+  @include fs-2;
+
+  @include mq(md) {
+    position: static;
+    justify-self: end;
+  }
+}
+
+.icon {
+  width: $sp-5;
+  height: $sp-5;
+  color: $link-color;
+}
+
+
+.myForm {
+  font-size: 1em;
+  width: 30em;
+  padding: 1em;
+}
+
+.myForm * {
+  box-sizing: border-box;
+  border-collapse: collapse;
+}
+
+.myForm label {
+  padding: 0;
+  font-weight: bold;
+  text-align:left;
+  display: block;
+}
+
+.myForm input {
+  margin-left: 2em;
+  float: right;
+  width: 25em;
+  max-width: 100%;
+  border: 1px solid $feedback-color;
+  font-family: "Optima",sans-serif;
+  font-size: 0.9em;
+  background: $table-background-color;
+  padding: 0.3em;
+}
+.myForm select,
+.myForm textarea {
+  margin-left: 2em;
+  float: right;
+  width: 25em;
+  max-width: 100%;
+  border: 1px solid $feedback-color;
+  font-family: "Optima",sans-serif;
+  font-size: 0.9em;
+  padding: 0.3em;
+}
+
+.myForm textarea {
+  height: 150px;
+  background: $table-background-color;
+}
+
+.myForm button {
+  padding: 1em;
+  border-radius: 0.3em;
+  background: $feedback-color;
+  border: none;
+  font-weight: bold;
+  margin-left: 12em;
+  margin-top: 1em;
+  justify-content: center;
+}
+
+.myForm button:hover {
+  background: $btn-primary-color;
+  color: #ffff;
+  cursor: pointer;
+}
+
+$toc-width: 232px !default;
+
+.toc {
+  display: none;
+
+  @include mq(md) {
+    z-index: 0;
+    display: block;
+    position: fixed;
+    top: 59px;
+    right: -190px;
+    width: $toc-width;
+    max-height: calc(100% - 118px);
+    overflow: auto;
+  }
+  &:hover{
+    right: 0;
+  }
+}
+
+.toc-list {
+  &:before {
+    content: "On this page";
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $grey-dk-300;
+    line-height: 1.5;
+  }
+  border: 2.0px dashed $link-color;
+  font-size: 14px;
+  list-style-type: none;
+  background-color: lighten($sidebar-color, 1);
+  padding: $sp-5 $sp-4;
+  margin-left: $sp-6;
+  margin-right: 0;
+  margin-bottom: 0;
+  overflow: auto;
+  &:hover{
+    border: 1px solid darken($sidebar-color, 30);
+    background-image: linear-gradient(
+      360deg,
+      rgba(darken($feedback-color, 0), 0.8) 0%,
+      rgba($feedback-color, 0.3) 30%,
+      rgba($feedback-color, 0) 100%
+      ),
+      // url(https://mdn.mozillademos.org/files/11307/bubbles.png)
+      ;
+  }
+}
+
+.toc-item {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+}
